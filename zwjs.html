@@ -31,7 +31,8 @@
       text-align: justify;
     }
     .img img {
-      width: 60%;
+      width: 50%;
+      border-radius: 50%;
     }
     .img {
       padding-top: 10px;
@@ -40,11 +41,11 @@
     }
   </style>
 </head>
-<body background="./img/bgc2.jpg" style=" background-repeat:no-repeat; background-size:100% 100%; background-attachment:fixed;">
+<body background="./img/head.jpg" style=" background-repeat:no-repeat; background-size:100% 100%; background-attachment:fixed;" >
   <div id="app" v-cloak>
     <div class="box">
       <div class="img">
-        <img src="./img/zx.png" alt="">
+        <img src="./img/img6.jpg" alt="">
       </div>
       <div class="text">
         &nbsp;&nbsp;&nbsp;&nbsp;
@@ -58,7 +59,7 @@
       el: '#app',
       data: function() {
 				return {
-          text: '各位观众朋友们好，我是周鑫。老衲法号帅哥。中国制造，采用人工智能，各部分零件齐全，运转稳定，经30来年运行，属信得过产品，并获得国际质量ISO9002认证。至今独守闺阁，出来几年了，想想还是觉得幼儿园最好混。所以说个人觉得自己学富五车，才华横溢，一生当中只有两件事不会：这也不会，那也不会。家境基本可以，长开一辆13开门的卡迪拉克。一听声音就知道是好机器，德国进口的，"突突突突"，一开起来，半个北京城冒黑烟，交警直冲我喊：“孙长老，收了神功吧。”我的兴趣爱好可分为静态和动态两种，静态就是睡觉，动态就是翻身……不过我还爱好电竞，体育，喜欢广交天下朋友。我的人生格言就是：做梦，一切皆有可能。暂时先罗嗦到这里。谢谢！',
+          text: '你好，我叫张海良，今年29岁，92年出生的猴子，家住北京平谷。我从小在农村长大，所以为人朴实善良。我是大专学历，毕业后从事过工地施工员，质检员，资料员，在火锅店配过火锅，开过会计事务所，年纪不大经历的事情不少。但是现在我的工作是一名攻城狮(傲~~，其实就是程序员啦)。我身高166，长的不高但是挺胖的，所以介意的话可以直接告诉我。我会做饭，会洗衣，会疼人。今年也快29了，想在30以前可以找到自己的另一半，我不求你国色天香，只要爱我就好。',
           showText: "",
           shu: '|'
         }
@@ -75,7 +76,7 @@
             }
             that.showText = that.showText + that.text[code]
             code ++ 
-          },200)
+          },100)
         }
 			},
       computed:{
@@ -87,6 +88,7 @@
         window.setTimeout(function() {
           that.changeText()
         },1000)
+        
       },
       filters:{
       },
