@@ -1,11 +1,93 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    body,html {
+      height: 100%;
+    }
+    #app {
+      width: 100%;
+      height: 100%;
+    }
+    .box {
+      max-width: 800px;
+    }
+    .text {
+      margin: 0 20px;
+      padding-top: 10px;
+      font-size: 18px;
+      font-weight: 700;
+    }
+    .img img {
+      width: 60%;
+    }
+    .img {
+      padding-top: 10px;
+      display: flex;
+      justify-content: center;
+    }
+  </style>
 </head>
-<body>
-  <div>我的第一个页面</div>
+<body background="./img/bgc2.jpg" style=" background-repeat:no-repeat; background-size:100% 100%; background-attachment:fixed;" >
+  <div id="app">
+    <div class="box">
+      <div class="img">
+        <img src="./img/img6.jpg" alt="">
+      </div>
+      <div class="text">
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        {{showText}}{{shu}}
+      </div>
+    </div>
+  </div>
+  <script src="./js/vue.min.js"></script>
+  <script>
+    var VueApp = new Vue({
+      el: '#app',
+      data: function() {
+				return {
+          text: '我做人有原则，说话算话。所以没有照片别给我发消息了。',
+          showText: "",
+          shu: '|'
+        }
+      },
+      methods: {
+        changeText:function() {
+          var that = this
+          var code = 0
+          var flag = window.setInterval(function() {
+            if(code  == that.text.length) {
+              flag = null
+              that.shu = ''
+              return
+            }
+            that.showText = that.showText + that.text[code]
+            code ++ 
+          },500)
+        }
+			},
+      computed:{
+      },
+			created: function() {
+			},
+      mounted: function() {
+        var that = this
+        window.setTimeout(function() {
+          that.changeText()
+        },1000)
+        
+      },
+      filters:{
+      },
+    })
+  </script>
 </body>
 </html>
