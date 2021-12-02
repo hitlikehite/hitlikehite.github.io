@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>吃</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    body,html {
+      height: 100%;
+    }
+    [v-cloak] {
+      display: none;
+    }
+    #app {
+      width: 100%;
+      height: 100%;
+    }
+    .box {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+    }
+    .item {
+      border: 1px solid #000;
+      border-radius: 5px;
+      min-width: 200px;
+      min-height: 200px;
+      line-height: 200px;
+      text-align: center;
+    }
+    .btnclass {
+      border: 1px solid #000;
+      margin-top: 20px;
+      border-radius: 5px;
+      padding: 10px 20px;
+    }
+    .top {
+      padding: 20px 0 10px 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="app" v-cloak>
+    <div class="box">
+      <div class="top">随即点餐</div>
+      <div class="item">{{eat}}</div>
+      <div @click="btnclick()" class="btnclass">{{btnnum == 1?'开始':'结束'}}</div>
+    </div>
+  </div>
+  <script src="./js/vue.min.js"></script>
+  <script>
+    var VueApp = new Vue({
+      el: '#app',
+      data: function() {
+				return {
+          eatList: ['凉菜','火锅','烤鱼','烧烤','打卤面','牛肉板面','米线','麻辣烫','麻辣香锅','盖饭','卤煮','羊杂汤','羊蝎子','大骨头','虾锅','炸鸡','煎饼','炸臭豆腐','粥','馅饼','饺子','包子','驴肉火烧','方便面','蛋糕','零食','水果','炒饭','炒饼','凉皮凉面','肉夹馍','刀削面','卤肉饭','馄饨','汤圆','黄焖鸡米饭','烤鸡','烤鸭','螺狮粉','炒河粉','炒米粉','汉堡','凉面','炸串'],
+          eat: '',
+          btnnum: 1,
+          flag:null
+        }
+      },
+      methods: {
+        btnclick: function() {
+          var that = this
+          var index = -1
+          if (this.btnnum == 1) {
+            this.btnnum = 2
+            var length = this.eatList.length-1
+            this.flag = window.setInterval(function() {
+              index = that.getRandomIntNumber(0,length)
+              that.eat = that.eatList[index]
+            },150)
+          }else{
+            this.btnnum = 1
+            window.clearInterval(this.flag)
+          }
+        },
+        getRandomIntNumber: function(min,max) {
+          var span = max - min + 1;
+          var result = Math.floor(Math.random() * span + min);
+          return result;
+        }
+			},
+    })
+  </script>
+</body>
+</html>
